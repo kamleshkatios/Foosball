@@ -7,15 +7,25 @@
 //
 
 #import "AddMemberViewController.h"
+#import "UIView+Resize.h"
 
 @interface AddMemberViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *continueBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTxt;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTxt;
+@property (weak, nonatomic) IBOutlet UITextField *lastName;
+- (IBAction)continueAction:(id)sender;
+- (IBAction)addMoreAction:(id)sender;
 @end
 
 @implementation AddMemberViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.continueBtn roundRectCorners];
+    [self.cancelBtn roundRectCorners];
     // Do any additional setup after loading the view.
 }
 
@@ -34,4 +44,9 @@
 }
 */
 
+- (IBAction)continueAction:(id)sender {
+}
+
+- (IBAction)addMoreAction:(id)sender {
+}
 @end

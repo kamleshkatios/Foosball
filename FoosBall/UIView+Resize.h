@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Resize)
-
+- (void)roundRectCorners;
+- (void)roundedCornersWithBorder;
+- (void)makeCircle;
 @end

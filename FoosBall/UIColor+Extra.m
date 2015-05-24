@@ -10,4 +10,12 @@
 
 @implementation UIColor (Extra)
 
++ (instancetype)navBarColor {
+    return [UIColor colorWithRed:(241.0/255.0) green:(75.0/255.0) blue:(56.0/255.0) alpha:1.0];
+}
+
++ (instancetype)appGreenColor {
+    return [UIColor colorWithRed:(106.0/255.0) green:(168.0/255.0) blue:(79.0/255.0) alpha:1.0];
+}
+
 @end

@@ -7,15 +7,29 @@
 //
 
 #import "NewGameViewController.h"
+#import "UIView+Resize.h"
 
 @interface NewGameViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *gamesCountBtn;
+@property (weak, nonatomic) IBOutlet UIButton *player1Btn;
+@property (weak, nonatomic) IBOutlet UIButton *player2Btn;
+@property (weak, nonatomic) IBOutlet UIButton *continueBtn;
 
+- (IBAction)gamesCountAction:(id)sender;
+- (IBAction)player2BtnAction:(id)sender;
+- (IBAction)player1BtnAction:(id)sender;
+- (IBAction)continueAction:(id)sender;
 @end
 
 @implementation NewGameViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.gamesCountBtn roundedCornersWithBorder];
+    [self.player1Btn roundedCornersWithBorder];
+    [self.player2Btn roundedCornersWithBorder];
+    [self.continueBtn roundRectCorners];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -34,4 +48,15 @@
 }
 */
 
+- (IBAction)gamesCountAction:(id)sender {
+}
+
+- (IBAction)player2BtnAction:(id)sender {
+}
+
+- (IBAction)player1BtnAction:(id)sender {
+}
+
+- (IBAction)continueAction:(id)sender {
+}
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WelcomeHeader : UIView
-
++ (instancetype) loadFromNib;
 @end

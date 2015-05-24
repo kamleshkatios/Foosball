@@ -9,13 +9,19 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-
+@property (nonatomic, strong) UITextField *selectedField;
 @end
 
 @implementation RootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:nil
+                                                                action:nil];
+    [self.navigationItem setBackBarButtonItem:backItem];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +29,33 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UITextField Functions
+
+- (IBAction)textFieldDoneEditing:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.selectedField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField == _selectedField) {
+        self.selectedField = nil;
+    }
+}
+
+- (void)dismissFieldInput:(id)sender
+{
+    if (self.selectedField) {
+        [self.selectedField resignFirstResponder];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

@@ -7,15 +7,42 @@
 //
 
 #import "UserScoreView.h"
+#import "UIView+Resize.h"
+
+@interface UserScoreView()
+@property (weak, nonatomic) IBOutlet UIButton *decreaseBtn;
+@property (weak, nonatomic) IBOutlet UIButton *increaseBtn;
+- (IBAction)decreaseAction:(id)sender;
+- (IBAction)increaseAction:(id)sender;
+@end
 
 @implementation UserScoreView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
+- (void) awakeFromNib {
+    [self.decreaseBtn makeCircle];
+    [self.increaseBtn makeCircle];
+}
++ (instancetype)loadFromNib {
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserScoreView class])
+                                bundle:nil];
+    return [nib instantiateWithOwner:nil options:nil].firstObject;
+}
+
+- (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder {
+    if ([self subviews].count == 0) {
+        UserScoreView *userScoreView = [UserScoreView loadFromNib];
+        userScoreView.translatesAutoresizingMaskIntoConstraints = YES;
+        return userScoreView;
+    } else {
+        return self;
+    }
+}
+
+
+- (IBAction)decreaseAction:(id)sender {
+}
+
+- (IBAction)increaseAction:(id)sender {
+}
 @end

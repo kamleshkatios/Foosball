@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (Extra)
-
++ (instancetype)navBarColor;
++ (instancetype)appGreenColor;
 @end
