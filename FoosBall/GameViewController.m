@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "UserScoreView.h"
 #import "UIView+Resize.h"
+#import "CoreDataHelper.h"
 
 @interface GameViewController ()
 
@@ -16,8 +17,6 @@
 @property (weak, nonatomic) IBOutlet UserScoreView *player2View;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *matchSegment;
 @property (weak, nonatomic) IBOutlet UIButton *finishBtn;
-
-@property (nonatomic) NSInteger temp;
 
 @property (strong, nonatomic) NSArray *player1FirstConstrint;
 @property (strong, nonatomic) NSArray *player2FirstConstrint;
@@ -35,11 +34,38 @@
     [self.player1View roundRectCorners];
     [self.player2View roundRectCorners];
     
+    __weak typeof(self) weakSelf = self;
+    [self.player1View setPlayer:self.player1 andCallback:^(BOOL didIncrement) {
+        [weakSelf arrangePlayers];
+        if (didIncrement) {
+            [weakSelf nextGame];
+        }
+    }];
+    [self.player2View setPlayer:self.player2 andCallback:^(BOOL didIncrement){
+        [weakSelf arrangePlayers];
+        if (didIncrement) {
+            [weakSelf nextGame];
+        }
+    }];
+    
     [self arrangePlayers];
     [self.player2View setBackgroundColor:[UIColor redColor]];
+    
+    [self.matchSegment removeAllSegments];
+    for (int gameCount = 1; gameCount <= self.noOfGames; gameCount ++) {
+        [self.matchSegment insertSegmentWithTitle:[NSString stringWithFormat:@"%d",gameCount]
+                                          atIndex:gameCount-1 animated:NO];
+    }
+    self.matchSegment.selectedSegmentIndex = 0;
     // Do any additional setup after loading the view.
 }
 
+- (void) nextGame {
+    if (self.matchSegment.selectedSegmentIndex == self.matchSegment.numberOfSegments -1) {
+        [self gameFinish];
+    }
+    self.matchSegment.selectedSegmentIndex ++;
+}
 - (void) arrangePlayers {
 
     UIView *playerSuper = self.player2View.superview;
@@ -68,22 +94,25 @@
                                                                                    views:@{@"player2View":self.player2View,
                                                                                            @"player1View":self.player1View}];
     }
-
-    if (self.temp % 2 == 0) {
+    
+    if (self.player1View.pointCount > self.player2View.pointCount
+        || (self.player1View.pointCount == 0 && self.player2View.pointCount == 0)) {
         [playerSuper removeConstraints:self.player2FirstConstrint];
         [playerSuper addConstraints:self.player1FirstConstrint];
-    } else {
+    } else if (self.player1View.pointCount < self.player2View.pointCount) {
         [playerSuper removeConstraints:self.player1FirstConstrint];
         [playerSuper addConstraints:self.player2FirstConstrint];
-        
     }
+    
+    if (self.player1View.pointCount == self.player2View.pointCount) {
+        return;
+    }
+
     [playerSuper setNeedsUpdateConstraints];
     [UIView animateWithDuration:1.0 animations:^{
         [playerSuper layoutIfNeeded];
     }];
-    
 }
-
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -93,20 +122,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)matchSegmentAction:(id)sender {
 }
 - (IBAction)finishBtnAction:(id)sender {
-    self.temp++;
-    [self arrangePlayers];
+    [self gameFinish];
 }
+
+- (void) gameFinish {
+    Player *winnerPlayer = nil;
+    if (self.player1View.pointCount > self.player2View.pointCount) {
+        winnerPlayer = self.player1;
+    } else {
+        winnerPlayer = self.player2;
+    }
+    
+    self.player1.totalMatch = @([self.player1.totalMatch integerValue] + self.noOfGames);
+    self.player2.totalMatch = @([self.player2.totalMatch integerValue] + self.noOfGames);
+    
+    self.player1.matchWon = @(self.player1.matchWon.integerValue + self.player1View.pointCount);
+    self.player2.matchWon = @(self.player2.matchWon.integerValue + self.player2View.pointCount);
+    
+    [[CoreDataHelper sharedCoreDataHelper] updatePlayerPoints:self.player1];
+    [[CoreDataHelper sharedCoreDataHelper] updatePlayerPoints:self.player2];
+    
+    NSDictionary *matchInfo = @{NumberOfGamesKey:@(self.noOfGames),
+                            Player1IdKey:self.player1.playerId,
+                            Player2IdKey:self.player2.playerId,
+                            Player1PointsKey:@(self.player1View.pointCount),
+                            Player2PointsKey:@(self.player2View.pointCount),
+                            MatchDateKey:[NSDate date]
+                            };    
+    [[CoreDataHelper sharedCoreDataHelper] createMatchObjectEntity:matchInfo];
+    
+    NSString *message = [NSString stringWithFormat:@"%@ has won the match", winnerPlayer.playerName];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulation!"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+    [alertView show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

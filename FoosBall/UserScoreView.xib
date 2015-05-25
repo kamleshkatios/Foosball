@@ -85,6 +85,8 @@
             <connections>
                 <outlet property="decreaseBtn" destination="Yfh-sT-Mdr" id="1GK-j8-S7W"/>
                 <outlet property="increaseBtn" destination="0RN-Zc-m0L" id="fCo-ur-JPv"/>
+                <outlet property="nameLbl" destination="Wjd-aK-0zy" id="rWU-6b-g73"/>
+                <outlet property="pointLbl" destination="NQD-E6-BLx" id="iJX-ld-ooD"/>
             </connections>
         </view>
     </objects>

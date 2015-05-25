@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A37F24D1B12C3D40038E4C9 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F24C1B12C3D40038E4C9 /* RankingCell.m */; };
+		1A37F2501B12C5AE0038E4C9 /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */; };
+		1A37F2531B12D5490038E4C9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F2521B12D5490038E4C9 /* Player.m */; };
 		1ABE059A1B0C404800329298 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE05991B0C404800329298 /* main.m */; };
 		1ABE059D1B0C404800329298 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE059C1B0C404800329298 /* AppDelegate.m */; };
 		1ABE05A31B0C404800329298 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE05A11B0C404800329298 /* Main.storyboard */; };
@@ -25,6 +28,14 @@
 		1ABE062B1B118D9D00329298 /* UserScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE062A1B118D9D00329298 /* UserScoreView.xib */; };
 		1ABE062E1B118F1C00329298 /* UserScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE062D1B118F1C00329298 /* UserScoreView.m */; };
 		1ABE06321B1193C900329298 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE06311B1193C900329298 /* GameViewController.m */; };
+		1ABE06361B1231D500329298 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE06351B1231D500329298 /* CoreDataHelper.m */; };
+		1ABE06381B12320000329298 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ABE06371B12320000329298 /* CoreData.framework */; };
+		1ABE063B1B1235B200329298 /* Foosball.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE06391B1235B200329298 /* Foosball.xcdatamodeld */; };
+		1ABE06441B126B5400329298 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE06431B126B5400329298 /* PickerView.m */; };
+		1ABE064B1B126FAD00329298 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE064A1B126FAD00329298 /* Utilities.m */; };
+		1ABE064C1B126FAD00329298 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE064A1B126FAD00329298 /* Utilities.m */; };
+		1ABE064F1B12B05F00329298 /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE064E1B12B05F00329298 /* Match.m */; };
+		1ABE06501B12B05F00329298 /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE064E1B12B05F00329298 /* Match.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A37F24B1B12C3D40038E4C9 /* RankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingCell.h; sourceTree = "<group>"; };
+		1A37F24C1B12C3D40038E4C9 /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingCell.m; sourceTree = "<group>"; };
+		1A37F24E1B12C5AE0038E4C9 /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingViewController.h; sourceTree = "<group>"; };
+		1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
+		1A37F2511B12D5490038E4C9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		1A37F2521B12D5490038E4C9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		1ABE05941B0C404800329298 /* FoosBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoosBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABE05981B0C404800329298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ABE05991B0C404800329298 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +88,16 @@
 		1ABE062D1B118F1C00329298 /* UserScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserScoreView.m; sourceTree = "<group>"; };
 		1ABE06301B1193C900329298 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		1ABE06311B1193C900329298 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		1ABE06341B1231D500329298 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		1ABE06351B1231D500329298 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		1ABE06371B12320000329298 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1ABE063A1B1235B200329298 /* Foosball.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Foosball.xcdatamodel; sourceTree = "<group>"; };
+		1ABE06421B126B5400329298 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		1ABE06431B126B5400329298 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		1ABE06491B126FAD00329298 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		1ABE064A1B126FAD00329298 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		1ABE064D1B12B05F00329298 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
+		1ABE064E1B12B05F00329298 /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ABE06381B12320000329298 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +122,7 @@
 		1ABE058B1B0C404800329298 = {
 			isa = PBXGroup;
 			children = (
+				1ABE06371B12320000329298 /* CoreData.framework */,
 				1ABE05961B0C404800329298 /* FoosBall */,
 				1ABE05B01B0C404800329298 /* FoosBallTests */,
 				1ABE05951B0C404800329298 /* Products */,
@@ -112,6 +141,8 @@
 		1ABE05961B0C404800329298 /* FoosBall */ = {
 			isa = PBXGroup;
 			children = (
+				1ABE06451B126E0B00329298 /* Global */,
+				1ABE06331B1231AF00329298 /* Manager */,
 				1ABE062F1B118F2D00329298 /* NewGame */,
 				1ABE061A1B115AEF00329298 /* Categories */,
 				1ABE06111B1153A200329298 /* Custom */,
@@ -128,6 +159,8 @@
 				1ABE06251B117B9200329298 /* NewGameViewController.m */,
 				1ABE06301B1193C900329298 /* GameViewController.h */,
 				1ABE06311B1193C900329298 /* GameViewController.m */,
+				1A37F24E1B12C5AE0038E4C9 /* RankingViewController.h */,
+				1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */,
 				1ABE05971B0C404800329298 /* Supporting Files */,
 				1ABE05991B0C404800329298 /* main.m */,
 			);
@@ -167,6 +200,10 @@
 				1ABE06121B1153C600329298 /* WelcomeHeader.h */,
 				1ABE06131B1153C600329298 /* WelcomeHeader.m */,
 				1ABE06151B1153D400329298 /* WelcomeHeader.xib */,
+				1ABE06421B126B5400329298 /* PickerView.h */,
+				1ABE06431B126B5400329298 /* PickerView.m */,
+				1A37F24B1B12C3D40038E4C9 /* RankingCell.h */,
+				1A37F24C1B12C3D40038E4C9 /* RankingCell.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -192,6 +229,29 @@
 				1ABE062D1B118F1C00329298 /* UserScoreView.m */,
 			);
 			name = NewGame;
+			sourceTree = "<group>";
+		};
+		1ABE06331B1231AF00329298 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1ABE06341B1231D500329298 /* CoreDataHelper.h */,
+				1ABE06351B1231D500329298 /* CoreDataHelper.m */,
+				1ABE06391B1235B200329298 /* Foosball.xcdatamodeld */,
+				1A37F2511B12D5490038E4C9 /* Player.h */,
+				1A37F2521B12D5490038E4C9 /* Player.m */,
+				1ABE064D1B12B05F00329298 /* Match.h */,
+				1ABE064E1B12B05F00329298 /* Match.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		1ABE06451B126E0B00329298 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				1ABE06491B126FAD00329298 /* Utilities.h */,
+				1ABE064A1B126FAD00329298 /* Utilities.m */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,18 +356,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ABE06441B126B5400329298 /* PickerView.m in Sources */,
 				1ABE059D1B0C404800329298 /* AppDelegate.m in Sources */,
 				1ABE062E1B118F1C00329298 /* UserScoreView.m in Sources */,
 				1ABE06261B117B9200329298 /* NewGameViewController.m in Sources */,
+				1A37F2531B12D5490038E4C9 /* Player.m in Sources */,
+				1ABE063B1B1235B200329298 /* Foosball.xcdatamodeld in Sources */,
 				1ABE05BF1B0C461500329298 /* MainViewController.m in Sources */,
 				1ABE06321B1193C900329298 /* GameViewController.m in Sources */,
+				1A37F24D1B12C3D40038E4C9 /* RankingCell.m in Sources */,
 				1ABE06231B11626100329298 /* RootViewController.m in Sources */,
 				1ABE06191B115AEA00329298 /* UIColor+Extra.m in Sources */,
 				1ABE059A1B0C404800329298 /* main.m in Sources */,
+				1ABE064B1B126FAD00329298 /* Utilities.m in Sources */,
 				1ABE06291B118BE200329298 /* UIView+Resize.m in Sources */,
 				1ABE061D1B115F3400329298 /* UIButton+Extra.m in Sources */,
+				1ABE06361B1231D500329298 /* CoreDataHelper.m in Sources */,
+				1ABE064F1B12B05F00329298 /* Match.m in Sources */,
 				1ABE06141B1153C600329298 /* WelcomeHeader.m in Sources */,
 				1ABE06201B11604D00329298 /* AddMemberViewController.m in Sources */,
+				1A37F2501B12C5AE0038E4C9 /* RankingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +383,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ABE06501B12B05F00329298 /* Match.m in Sources */,
+				1ABE064C1B126FAD00329298 /* Utilities.m in Sources */,
 				1ABE05B41B0C404800329298 /* FoosBallTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +584,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1ABE06391B1235B200329298 /* Foosball.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1ABE063A1B1235B200329298 /* Foosball.xcdatamodel */,
+			);
+			currentVersion = 1ABE063A1B1235B200329298 /* Foosball.xcdatamodel */;
+			path = Foosball.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1ABE058C1B0C404800329298 /* Project object */;
 }

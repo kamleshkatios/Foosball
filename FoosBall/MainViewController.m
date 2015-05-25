@@ -9,6 +9,10 @@
 #import "MainViewController.h"
 #import "WelcomeHeader.h"
 #import "UIColor+Extra.h"
+#import "AddMemberViewController.h"
+#import "NewGameViewController.h"
+#import "CoreDataHelper.h"
+#import "RankingViewController.h"
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *baseTableview;
@@ -23,7 +27,8 @@
     self.listOfOptions = @[@"Start A Game",
                            @"Add A New Player",
                            @"View Score",
-                           @"Edit Score"];
+                           @"Edit Score",
+                           @"View Ranking"];
     
     // Do any additional setup after loading the view.
 }
@@ -56,6 +61,35 @@
     return welcomeHeader;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString * storyboardName = @"Main";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    
+    NSString * viewControllerID = @"EventsTab";
+
+    if (indexPath.row == 0) {
+        if ([[CoreDataHelper sharedCoreDataHelper] playersList].count < 2) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"There is no enough players to start the match."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+            return;
+        }
+        viewControllerID = NSStringFromClass([NewGameViewController class]);
+    } else if (indexPath.row == 1) {
+        viewControllerID = NSStringFromClass([AddMemberViewController class]);
+    } else if (indexPath.row == 2) {
+        
+    } else if (indexPath.row == 3) {
+        
+    } else if (indexPath.row == 4) {
+        viewControllerID = NSStringFromClass([RankingViewController class]);
+    }
+    UIViewController * viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self.navigationController pushViewController:viewController animated:YES];
+
+}
 
 
 @end

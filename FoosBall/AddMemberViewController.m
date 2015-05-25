@@ -8,6 +8,7 @@
 
 #import "AddMemberViewController.h"
 #import "UIView+Resize.h"
+#import "CoreDataHelper.h"
 
 @interface AddMemberViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *continueBtn;
@@ -34,19 +35,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)continueAction:(id)sender {
+    
+    if ([self.userNameTxt.text isEqualToString:@""]
+        || [self.firstNameTxt.text isEqualToString:@""]
+        || [self.lastName.text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please complete all the fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    } else{
+        NSDictionary *personDict = @{PlayerIdKey:self.userNameTxt.text,
+                                     PlayerNameKey:[NSString stringWithFormat:@"%@ %@",self.firstNameTxt.text, self.lastName.text]};
+        
+        if ([[CoreDataHelper sharedCoreDataHelper] createPlayerObjectEntity:personDict]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have successfully added a member." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Duplicate" message:@"The User Name is already chosen, Please try with different user name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+    }
 }
 
-- (IBAction)addMoreAction:(id)sender {
-}
 @end

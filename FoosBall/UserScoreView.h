@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Player.h"
+
+typedef void (^ScoreChangedCallBack)(BOOL didIncrement);
 
 @interface UserScoreView : UIView
-
+@property (nonatomic, strong) Player *player;
+@property (nonatomic) NSInteger pointCount;
+- (void) setPlayer:(Player *)player andCallback:(ScoreChangedCallBack) scoreChangedCallBack;
 @end

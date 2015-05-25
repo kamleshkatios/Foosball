@@ -8,12 +8,20 @@
 
 #import "NewGameViewController.h"
 #import "UIView+Resize.h"
+#import "PickerView.h"
+#import "CoreDataHelper.h"
+#import "Player.h"
+#import "GameViewController.h"
 
 @interface NewGameViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *gamesCountBtn;
 @property (weak, nonatomic) IBOutlet UIButton *player1Btn;
 @property (weak, nonatomic) IBOutlet UIButton *player2Btn;
 @property (weak, nonatomic) IBOutlet UIButton *continueBtn;
+
+@property (nonatomic) NSInteger noOfGames;
+@property (nonatomic, strong) Player *player1;
+@property (nonatomic, strong) Player *player2;
 
 - (IBAction)gamesCountAction:(id)sender;
 - (IBAction)player2BtnAction:(id)sender;
@@ -49,14 +57,65 @@
 */
 
 - (IBAction)gamesCountAction:(id)sender {
+    PickerView *pickerView = [PickerView pickerView];
+    [(UIButton *)sender addSubview:pickerView];
+    
+    __weak typeof (self) weakSelf = self;
+    NSArray *list = @[@"3",@"5",@"7"];
+    [pickerView showPickerWithItems:list selectedIndexCallback:^(NSInteger selectedIndex, BOOL isDone) {
+        weakSelf.noOfGames = [list[selectedIndex] integerValue];
+        [weakSelf.gamesCountBtn setTitle:[NSString stringWithFormat:@"No of Match : %@",list[selectedIndex]]
+                                forState:UIControlStateNormal];
+    }];
 }
 
 - (IBAction)player2BtnAction:(id)sender {
+    NSArray *playersList = [[CoreDataHelper sharedCoreDataHelper] playersList];
+    PickerView *pickerView = [PickerView pickerView];
+    [(UIButton *)sender addSubview:pickerView];
+    
+    __weak typeof (self) weakSelf = self;
+    NSMutableArray *list = [NSMutableArray arrayWithCapacity:playersList.count];
+    
+    [playersList enumerateObjectsUsingBlock:^(Player* obj, NSUInteger idx, BOOL *stop) {
+        [list addObject:[NSString stringWithFormat:@"%@ (%@)",obj.playerName, obj.playerId]];
+    }];
+    [pickerView showPickerWithItems:list selectedIndexCallback:^(NSInteger selectedIndex, BOOL isDone) {
+        weakSelf.player2 = playersList[selectedIndex];
+        [weakSelf.player2Btn setTitle:list[selectedIndex]
+                             forState:UIControlStateNormal];
+    }];
 }
 
 - (IBAction)player1BtnAction:(id)sender {
+    
+    NSArray *playersList = [[CoreDataHelper sharedCoreDataHelper] playersList];
+    PickerView *pickerView = [PickerView pickerView];
+    [(UIButton *)sender addSubview:pickerView];
+    
+    __weak typeof (self) weakSelf = self;
+    NSMutableArray *list = [NSMutableArray arrayWithCapacity:playersList.count];
+    
+    [playersList enumerateObjectsUsingBlock:^(Player* obj, NSUInteger idx, BOOL *stop) {
+        [list addObject:[NSString stringWithFormat:@"%@ (%@)",obj.playerName, obj.playerId]];
+    }];
+    [pickerView showPickerWithItems:list selectedIndexCallback:^(NSInteger selectedIndex, BOOL isDone) {
+        weakSelf.player1 = playersList[selectedIndex];
+        [weakSelf.player1Btn setTitle:list[selectedIndex]
+                                forState:UIControlStateNormal];
+    }];
 }
 
 - (IBAction)continueAction:(id)sender {
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:NSStringFromClass([GameViewController class])]) {
+        GameViewController* gameViewController = [segue destinationViewController];
+        gameViewController.noOfGames = self.noOfGames;
+        gameViewController.player1 = self.player1;
+        gameViewController.player2 = self.player2;
+    }
+}
+
 @end

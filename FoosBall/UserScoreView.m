@@ -10,8 +10,13 @@
 #import "UIView+Resize.h"
 
 @interface UserScoreView()
+
+@property (nonatomic, copy) ScoreChangedCallBack scoreChangedCallBack;
+
 @property (weak, nonatomic) IBOutlet UIButton *decreaseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *increaseBtn;
+@property (weak, nonatomic) IBOutlet UILabel *pointLbl;
+@property (weak, nonatomic) IBOutlet UILabel *nameLbl;
 - (IBAction)decreaseAction:(id)sender;
 - (IBAction)increaseAction:(id)sender;
 @end
@@ -39,10 +44,31 @@
     }
 }
 
+- (void)updateScoreCard {
+    self.pointLbl.text = [NSString stringWithFormat:@"%ld",self.pointCount];
+}
+
+- (void)setPlayer:(Player *)player andCallback:(ScoreChangedCallBack) scoreChangedCallBack {
+    self.player = player;
+    self.nameLbl.text = player.playerName;
+    self.scoreChangedCallBack = scoreChangedCallBack;
+    self.pointCount = 0;
+    [self updateScoreCard];
+}
 
 - (IBAction)decreaseAction:(id)sender {
+    if (self.pointCount == 0) {
+        return;
+    }
+    self.pointCount--;
+    [self updateScoreCard];
+    self.scoreChangedCallBack(NO);
 }
 
 - (IBAction)increaseAction:(id)sender {
+    self.pointCount++;
+    [self updateScoreCard];
+    self.scoreChangedCallBack(YES);
+
 }
 @end
