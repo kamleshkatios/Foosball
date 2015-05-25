@@ -146,8 +146,8 @@
         NSInteger player2Score = self.player2.matchWon.integerValue - self.editMatch.player2Points.integerValue;
         player2Score += self.player2View.pointCount;
 
-        self.player1.matchWon = @(player1Score);
-        self.player2.matchWon = @(player2Score);
+        self.player1.matchWon = @(self.player1.matchWon.integerValue + player1Score);
+        self.player2.matchWon = @(self.player2.matchWon.integerValue + player2Score);
     
         self.editMatch.player1Points = @(player1Score);
         self.editMatch.player2Points = @(player2Score);
