@@ -50,6 +50,34 @@ NSString *const Player2PointsKey  = @"player2Points";
     return context;
 }
 
+- (NSArray *) matchList {
+    @try {
+        NSManagedObjectContext *context = [self temporaryContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Match" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        NSSortDescriptor *sdSortDate = [NSSortDescriptor sortDescriptorWithKey:@"matchDate" ascending:YES];
+        request.sortDescriptors = @[sdSortDate];
+
+        [request setEntity:entity];
+        NSError * error = nil;
+        
+        NSArray *objects = [context executeFetchRequest:request error:&error];
+        [self removeContextChangedObserver:context];
+        
+        if ([objects lastObject]) {
+            [self saveContext:context];
+            NSArray *playerObjects = [self setManagedObjects:(NSMutableArray *)objects managedObjectContext:self.managedObjectContext];
+            return playerObjects;
+        } else {
+            return nil;
+        }
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
+
 - (NSArray *) playersList {
     @try {
         
@@ -177,7 +205,7 @@ NSString *const Player2PointsKey  = @"player2Points";
 - (BOOL) createMatchObjectEntity:(NSDictionary *)matchDetails {
     @try {
         NSManagedObjectContext *context = [self temporaryContext];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Player" inManagedObjectContext:context];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Match" inManagedObjectContext:context];
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
         [request setEntity:entity];

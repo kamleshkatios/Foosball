@@ -35,7 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark -
 #pragma mark Tableview
 
@@ -49,6 +48,5 @@
     cell.player = self.listOfPlayers[indexPath.row];
     return cell;
 }
-
 
 @end

@@ -10,6 +10,8 @@
 		1A37F24D1B12C3D40038E4C9 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F24C1B12C3D40038E4C9 /* RankingCell.m */; };
 		1A37F2501B12C5AE0038E4C9 /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */; };
 		1A37F2531B12D5490038E4C9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F2521B12D5490038E4C9 /* Player.m */; };
+		1A37F2561B12D87F0038E4C9 /* ViewScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F2551B12D87F0038E4C9 /* ViewScoreViewController.m */; };
+		1A37F2591B12DA190038E4C9 /* ScoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A37F2581B12DA190038E4C9 /* ScoreViewCell.m */; };
 		1ABE059A1B0C404800329298 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE05991B0C404800329298 /* main.m */; };
 		1ABE059D1B0C404800329298 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE059C1B0C404800329298 /* AppDelegate.m */; };
 		1ABE05A31B0C404800329298 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE05A11B0C404800329298 /* Main.storyboard */; };
@@ -55,6 +57,10 @@
 		1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
 		1A37F2511B12D5490038E4C9 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		1A37F2521B12D5490038E4C9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		1A37F2541B12D87F0038E4C9 /* ViewScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewScoreViewController.h; sourceTree = "<group>"; };
+		1A37F2551B12D87F0038E4C9 /* ViewScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewScoreViewController.m; sourceTree = "<group>"; };
+		1A37F2571B12DA190038E4C9 /* ScoreViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewCell.h; sourceTree = "<group>"; };
+		1A37F2581B12DA190038E4C9 /* ScoreViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewCell.m; sourceTree = "<group>"; };
 		1ABE05941B0C404800329298 /* FoosBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoosBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABE05981B0C404800329298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ABE05991B0C404800329298 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,6 +167,8 @@
 				1ABE06311B1193C900329298 /* GameViewController.m */,
 				1A37F24E1B12C5AE0038E4C9 /* RankingViewController.h */,
 				1A37F24F1B12C5AE0038E4C9 /* RankingViewController.m */,
+				1A37F2541B12D87F0038E4C9 /* ViewScoreViewController.h */,
+				1A37F2551B12D87F0038E4C9 /* ViewScoreViewController.m */,
 				1ABE05971B0C404800329298 /* Supporting Files */,
 				1ABE05991B0C404800329298 /* main.m */,
 			);
@@ -204,6 +212,8 @@
 				1ABE06431B126B5400329298 /* PickerView.m */,
 				1A37F24B1B12C3D40038E4C9 /* RankingCell.h */,
 				1A37F24C1B12C3D40038E4C9 /* RankingCell.m */,
+				1A37F2571B12DA190038E4C9 /* ScoreViewCell.h */,
+				1A37F2581B12DA190038E4C9 /* ScoreViewCell.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -356,12 +366,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A37F2561B12D87F0038E4C9 /* ViewScoreViewController.m in Sources */,
 				1ABE06441B126B5400329298 /* PickerView.m in Sources */,
 				1ABE059D1B0C404800329298 /* AppDelegate.m in Sources */,
 				1ABE062E1B118F1C00329298 /* UserScoreView.m in Sources */,
 				1ABE06261B117B9200329298 /* NewGameViewController.m in Sources */,
 				1A37F2531B12D5490038E4C9 /* Player.m in Sources */,
 				1ABE063B1B1235B200329298 /* Foosball.xcdatamodeld in Sources */,
+				1A37F2591B12DA190038E4C9 /* ScoreViewCell.m in Sources */,
 				1ABE05BF1B0C461500329298 /* MainViewController.m in Sources */,
 				1ABE06321B1193C900329298 /* GameViewController.m in Sources */,
 				1A37F24D1B12C3D40038E4C9 /* RankingCell.m in Sources */,

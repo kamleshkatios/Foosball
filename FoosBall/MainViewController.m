@@ -13,6 +13,7 @@
 #import "NewGameViewController.h"
 #import "CoreDataHelper.h"
 #import "RankingViewController.h"
+#import "ViewScoreViewController.h"
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *baseTableview;
@@ -29,8 +30,6 @@
                            @"View Score",
                            @"Edit Score",
                            @"View Ranking"];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,15 +79,14 @@
     } else if (indexPath.row == 1) {
         viewControllerID = NSStringFromClass([AddMemberViewController class]);
     } else if (indexPath.row == 2) {
-        
+        viewControllerID = NSStringFromClass([ViewScoreViewController class]);
     } else if (indexPath.row == 3) {
-        
+        viewControllerID = NSStringFromClass([ViewScoreViewController class]);
     } else if (indexPath.row == 4) {
         viewControllerID = NSStringFromClass([RankingViewController class]);
     }
     UIViewController * viewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self.navigationController pushViewController:viewController animated:YES];
-
 }
 
 
