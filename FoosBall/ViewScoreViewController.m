@@ -9,10 +9,12 @@
 #import "ViewScoreViewController.h"
 #import "CoreDataHelper.h"
 #import "ScoreViewCell.h"
+#import "GameViewController.h"
 
 @interface ViewScoreViewController ()
 @property (nonatomic, weak) IBOutlet UITableView *baseTableView;
 @property (nonatomic, strong) NSArray *listOfMatch;
+@property (nonatomic, strong) NSIndexPath *selectedIndex;
 @end
 
 @implementation ViewScoreViewController
@@ -31,6 +33,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:NSStringFromClass([GameViewController class])]) {
+        GameViewController* gameViewController = [segue destinationViewController];
+        gameViewController.editMatch = self.listOfMatch[self.selectedIndex.row];
+    }
+}
+
 #pragma mark -
 #pragma mark Tableview
 
@@ -46,6 +55,10 @@
     ScoreViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellId forIndexPath:indexPath];
     cell.match = self.listOfMatch[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedIndex = indexPath;
 }
 
 @end

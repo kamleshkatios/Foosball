@@ -34,6 +34,10 @@
     [self.player1View roundRectCorners];
     [self.player2View roundRectCorners];
     
+    if (self.editMatch) {
+        self.player1 = [[CoreDataHelper sharedCoreDataHelper] playerWithPlayerId:self.editMatch.player1Id];
+        self.player2 = [[CoreDataHelper sharedCoreDataHelper] playerWithPlayerId:self.editMatch.player2Id];
+    }
     __weak typeof(self) weakSelf = self;
     [self.player1View setPlayer:self.player1 andCallback:^(BOOL didIncrement) {
         [weakSelf arrangePlayers];
@@ -41,12 +45,20 @@
             [weakSelf nextGame];
         }
     }];
+    
     [self.player2View setPlayer:self.player2 andCallback:^(BOOL didIncrement){
         [weakSelf arrangePlayers];
         if (didIncrement) {
             [weakSelf nextGame];
         }
     }];
+    
+    if (self.editMatch) {
+        self.player1View.pointCount = self.editMatch.player1Points.integerValue;
+        self.player2View.pointCount = self.editMatch.player2Points.integerValue;
+        [self.player1View updateScoreCard];
+        [self.player2View updateScoreCard];
+    }
     
     [self arrangePlayers];
     [self.player2View setBackgroundColor:[UIColor redColor]];
@@ -126,9 +138,32 @@
 }
 - (IBAction)finishBtnAction:(id)sender {
     [self gameFinish];
+    
+    if (self.editMatch) {
+        NSInteger player1Score = self.player1.matchWon.integerValue - self.editMatch.player1Points.integerValue;
+        player1Score += self.player1View.pointCount;
+        
+        NSInteger player2Score = self.player2.matchWon.integerValue - self.editMatch.player2Points.integerValue;
+        player2Score += self.player2View.pointCount;
+
+        self.player1.matchWon = @(player1Score);
+        self.player2.matchWon = @(player2Score);
+    
+        self.editMatch.player1Points = @(player1Score);
+        self.editMatch.player2Points = @(player2Score);
+
+        [[CoreDataHelper sharedCoreDataHelper] updatePlayerPoints:self.player1];
+        [[CoreDataHelper sharedCoreDataHelper] updatePlayerPoints:self.player2];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void) gameFinish {
+    if (self.editMatch) {
+        return;
+    }
+    
     Player *winnerPlayer = nil;
     if (self.player1View.pointCount > self.player2View.pointCount) {
         winnerPlayer = self.player1;

@@ -265,6 +265,29 @@ NSString *const Player2PointsKey  = @"player2Points";
     }
 }
 
+- (Player *) playerWithPlayerId:(NSString *) playerId {
+    @try {
+        NSManagedObjectContext *context = [self temporaryContext];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Player" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        [request setEntity:entity];
+        NSError * error = nil;
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"playerId = %@",playerId];
+        [request setPredicate:pred];
+        NSArray *objects = [context executeFetchRequest:request error:&error];
+        
+        if ([objects lastObject]) {
+            NSArray *playerObjects = [self setManagedObjects:(NSMutableArray *)objects managedObjectContext:self.managedObjectContext];
+            [self removeContextChangedObserver:context];
+            return playerObjects.firstObject;
+        }
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
 #pragma mark Utility
 + (instancetype)sharedCoreDataHelper {
     static dispatch_once_t once;

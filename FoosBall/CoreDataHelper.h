@@ -30,4 +30,5 @@ extern NSString *const Player2PointsKey;
 - (BOOL) createMatchObjectEntity:(NSDictionary *)matchDetails;
 - (Player *) highestMatchPlayer;
 - (NSArray *) matchList;
+- (Player *) playerWithPlayerId:(NSString *) playerId;
 @end

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Player.h"
+#import "Match.h"
 
 @interface GameViewController : UIViewController <UIAlertViewDelegate>
 @property (nonatomic) NSInteger noOfGames;
 @property (nonatomic, strong) Player *player1;
 @property (nonatomic, strong) Player *player2;
+
+@property (nonatomic, strong) Match *editMatch;
 @end

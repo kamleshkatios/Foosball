@@ -377,6 +377,7 @@
                                             <outlet property="matchIdLbl" destination="yNl-mB-i4Q" id="Hes-cO-njh"/>
                                             <outlet property="player1ScoreLbl" destination="htd-YL-0Ve" id="LDP-Bh-ARy"/>
                                             <outlet property="player2ScoreLbl" destination="mAH-jm-OON" id="wMp-Or-mOh"/>
+                                            <segue destination="JKW-fk-GCM" kind="show" identifier="GameViewController" id="Bp5-Db-Ykq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -401,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfL-fE-udO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873" y="1649"/>
+            <point key="canvasLocation" x="888" y="1717"/>
         </scene>
         <!--New Game-->
         <scene sceneID="drb-5H-Khj">
@@ -587,4 +588,7 @@
             <point key="canvasLocation" x="888" y="303"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bp5-Db-Ykq"/>
+    </inferredMetricsTieBreakers>
 </document>
