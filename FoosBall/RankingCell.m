@@ -29,7 +29,7 @@
 
 - (void) setPlayer:(Player *)player {
     self.nameLbl.text = [player.playerName stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
-    self.totalMatchPlayed.text = [NSString stringWithFormat:@"Total Match Played: %ld",player.totalMatch.integerValue];
+    self.totalMatchPlayed.text = [NSString stringWithFormat:@"Total Match : %ld",player.totalMatch.integerValue];
     self.totalWon.text = [NSString stringWithFormat:@"Total Won : %ld",player.matchWon.integerValue];
     self.rankingLbl.text = [player.rank stringValue];
 }

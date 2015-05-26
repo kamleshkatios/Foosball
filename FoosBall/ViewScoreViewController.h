@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface ViewScoreViewController : UIViewController
+@interface ViewScoreViewController : RootViewController
 
 @end
